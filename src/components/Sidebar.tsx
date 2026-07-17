@@ -8,6 +8,7 @@ import {
   SearchIcon,
   HeartIcon,
 } from "@/components/icons";
+import { Logo } from "@/components/Logo";
 
 const items = [
   { href: "/", label: "Inicio", icon: HomeIcon },
@@ -22,9 +23,7 @@ export default function Sidebar() {
   return (
     <aside className="sticky top-0 hidden h-screen w-[240px] shrink-0 flex-col border-r border-line px-3 py-6 md:flex">
       <Link href="/" className="mb-6 px-3">
-        <span className="text-2xl font-extrabold tracking-tight">
-          Oficio<span className="text-accent">.</span>
-        </span>
+        <Logo size={32} />
       </Link>
 
       <nav className="flex flex-col gap-1">

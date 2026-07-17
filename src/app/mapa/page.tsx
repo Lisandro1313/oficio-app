@@ -9,6 +9,7 @@ import {
 } from "@/lib/data";
 import { Avatar, Stars } from "@/components/ui";
 import { OficioIcon, PinIcon, ShieldIcon } from "@/components/icons";
+import SaveButton from "@/components/SaveButton";
 
 const oficios: (Oficio | "Todos")[] = [
   "Todos",
@@ -151,24 +152,25 @@ export default function Mapa() {
         </h2>
         <div className="space-y-2.5">
           {lista.map((p) => (
-            <Link
+            <div
               key={p.id}
-              href={`/perfil/${p.id}`}
-              className="flex items-center gap-3 rounded-2xl border border-line bg-card p-3 active:border-accent-soft"
+              className="flex items-center gap-3 rounded-2xl border border-line bg-card p-3"
             >
-              <Avatar gradient={p.avatar} inicial={p.inicial} size={42} />
-              <div className="flex-1">
-                <div className="text-sm font-semibold">{p.nombre}</div>
-                <div className="flex items-center gap-1.5 text-xs text-muted">
-                  <OficioIcon oficio={p.oficio} size={13} />
-                  <span>{p.oficio}</span>
-                  <span>·</span>
-                  <Stars value={p.rating} />
-                  <span className="font-semibold text-ink">{p.rating}</span>
+              <Link href={`/perfil/${p.id}`} className="flex flex-1 items-center gap-3">
+                <Avatar gradient={p.avatar} inicial={p.inicial} size={42} />
+                <div className="flex-1">
+                  <div className="text-sm font-semibold">{p.nombre}</div>
+                  <div className="flex items-center gap-1.5 text-xs text-muted">
+                    <OficioIcon oficio={p.oficio} size={13} />
+                    <span>{p.oficio}</span>
+                    <span>·</span>
+                    <Stars value={p.rating} />
+                    <span className="font-semibold text-ink">{p.rating}</span>
+                  </div>
                 </div>
-              </div>
-              <span className="text-xs text-muted">{p.barrio}</span>
-            </Link>
+              </Link>
+              <SaveButton id={p.id} variant="plain" size={18} />
+            </div>
           ))}
         </div>
       </div>

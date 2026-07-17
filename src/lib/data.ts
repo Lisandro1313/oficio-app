@@ -327,6 +327,58 @@ export const trabajos: Trabajo[] = [
   },
 ];
 
+export type Equipo = {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  oficios: Oficio[];
+  miembros: string[]; // ids de profesionales
+  cover: string;
+  trabajos: number;
+  rating: number;
+  zona: string;
+  desde: number;
+};
+
+export const equipos: Equipo[] = [
+  {
+    id: "construccion-360",
+    nombre: "Construcción 360",
+    descripcion:
+      "Reforma completa llave en mano. Coordinamos albañilería, electricidad, plomería, gas y pintura entre todos. Vos hablás con una sola persona y nosotros nos organizamos.",
+    oficios: ["Albañil", "Electricista", "Plomero", "Gasista", "Pintor"],
+    miembros: [
+      "ramon-fernandez",
+      "carlos-gomez",
+      "juan-perez",
+      "diego-sosa",
+      "lucia-moreno",
+    ],
+    cover: "/trabajos/t6.jpg",
+    trabajos: 47,
+    rating: 4.9,
+    zona: "La Plata y alrededores",
+    desde: 350000,
+  },
+  {
+    id: "bano-express",
+    nombre: "Baño Express",
+    descripcion:
+      "Nos especializamos en baños completos: rompemos, hacemos plomería nueva, revocamos, colocamos y pintamos. Tu baño nuevo en una semana.",
+    oficios: ["Plomero", "Albañil", "Pintor"],
+    miembros: ["juan-perez", "ramon-fernandez", "lucia-moreno"],
+    cover: "/trabajos/t3.jpg",
+    trabajos: 23,
+    rating: 4.8,
+    zona: "La Plata",
+    desde: 480000,
+  },
+];
+
+export function getEquipo(id: string) {
+  return equipos.find((e) => e.id === id);
+}
+
 export function getProfesional(id: string) {
   return profesionales.find((p) => p.id === id);
 }

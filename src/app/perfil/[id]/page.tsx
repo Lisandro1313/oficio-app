@@ -7,6 +7,7 @@ import {
 } from "@/lib/data";
 import { Avatar, OficioBadge, Stars, Verificado } from "@/components/ui";
 import BackBar from "@/components/BackBar";
+import SaveButton from "@/components/SaveButton";
 import {
   ChatIcon,
   HandshakeIcon,
@@ -44,6 +45,9 @@ export default async function Perfil({
           <img src={cover} alt="" className="h-full w-full object-cover opacity-60" />
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-bg/30 via-bg/40 to-bg" />
+        <div className="absolute right-3 top-14 z-40">
+          <SaveButton id={prof.id} />
+        </div>
       </div>
 
       {/* Cabecera */}

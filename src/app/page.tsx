@@ -4,6 +4,8 @@ import { useState } from "react";
 import { trabajos, type Oficio } from "@/lib/data";
 import JobCard from "@/components/JobCard";
 import { OficioIcon, PinIcon } from "@/components/icons";
+import { Logo } from "@/components/Logo";
+import EquiposCarrusel from "@/components/EquiposCarrusel";
 
 const oficios: (Oficio | "Todos")[] = [
   "Todos",
@@ -25,12 +27,12 @@ export default function Feed() {
       {/* Header */}
       <header className="sticky top-0 z-30 border-b border-line bg-bg/80 px-4 pb-3 pt-5 backdrop-blur-xl">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-extrabold tracking-tight">
-              Oficio<span className="text-accent">.</span>
-            </h1>
-            <p className="text-xs text-muted">Trabajos reales cerca tuyo</p>
+          <div className="md:hidden">
+            <Logo size={28} />
           </div>
+          <p className="hidden text-sm font-semibold text-muted md:block">
+            Trabajos reales cerca tuyo
+          </p>
           <button className="flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-2 text-xs font-medium text-muted">
             <PinIcon size={13} className="text-accent" /> La Plata
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9a9aa5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -66,6 +68,9 @@ export default function Feed() {
         Mirá todo <b>sin registrarte</b>. Creás cuenta recién cuando querés
         contactar a alguien.
       </div>
+
+      {/* Equipos */}
+      {filtro === "Todos" && <EquiposCarrusel />}
 
       {/* Feed */}
       <div className="flex flex-col gap-5 p-4">

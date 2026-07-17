@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import BottomNav from "@/components/BottomNav";
 import Sidebar from "@/components/Sidebar";
+import Onboarding from "@/components/Onboarding";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
           </div>
         </div>
         <BottomNav />
+        <Onboarding />
       </body>
     </html>
   );
