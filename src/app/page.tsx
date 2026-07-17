@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { trabajos, OFICIO_EMOJI, type Oficio } from "@/lib/data";
+import { trabajos, type Oficio } from "@/lib/data";
 import JobCard from "@/components/JobCard";
+import { OficioIcon, PinIcon } from "@/components/icons";
 
 const oficios: (Oficio | "Todos")[] = [
   "Todos",
@@ -30,8 +31,8 @@ export default function Feed() {
             </h1>
             <p className="text-xs text-muted">Trabajos reales cerca tuyo</p>
           </div>
-          <button className="flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-2 text-xs font-medium">
-            📍 La Plata
+          <button className="flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-2 text-xs font-medium text-muted">
+            <PinIcon size={13} className="text-accent" /> La Plata
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9a9aa5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="m6 9 6 6 6-6" />
             </svg>
@@ -46,15 +47,13 @@ export default function Feed() {
               <button
                 key={o}
                 onClick={() => setFiltro(o)}
-                className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
+                className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
                   active
                     ? "bg-accent-strong text-white shadow-[0_4px_14px_rgba(249,115,22,0.35)]"
                     : "border border-line bg-card text-muted"
                 }`}
               >
-                {o !== "Todos" && (
-                  <span className="mr-1">{OFICIO_EMOJI[o as Oficio]}</span>
-                )}
+                {o !== "Todos" && <OficioIcon oficio={o as Oficio} size={13} />}
                 {o}
               </button>
             );
@@ -63,12 +62,9 @@ export default function Feed() {
       </header>
 
       {/* Banner sin registro */}
-      <div className="mx-4 mt-4 flex items-center gap-2.5 rounded-2xl border border-accent-soft bg-accent-soft px-3.5 py-3 text-[12px] text-accent">
-        <span className="text-base">👀</span>
-        <span>
-          Mirá todo <b>sin registrarte</b>. Creás cuenta recién cuando querés
-          contactar.
-        </span>
+      <div className="mx-4 mt-4 rounded-2xl border border-accent-soft bg-accent-soft px-3.5 py-3 text-[12px] text-accent">
+        Mirá todo <b>sin registrarte</b>. Creás cuenta recién cuando querés
+        contactar a alguien.
       </div>
 
       {/* Feed */}

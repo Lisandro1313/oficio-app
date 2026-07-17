@@ -7,6 +7,14 @@ import {
 } from "@/lib/data";
 import { Avatar, OficioBadge, Stars, Verificado } from "@/components/ui";
 import BackBar from "@/components/BackBar";
+import {
+  ChatIcon,
+  HandshakeIcon,
+  PinIcon,
+  ShieldIcon,
+  ToolsIcon,
+  WhatsappIcon,
+} from "@/components/icons";
 
 export function generateStaticParams() {
   return profesionales.map((p) => ({ id: p.id }));
@@ -63,14 +71,15 @@ export default async function Perfil({
 
         {/* Chips de estado */}
         <div className="mt-4 flex flex-wrap gap-2">
-          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-400">
-            🟢 {prof.disponible}
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-400">
+            <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            {prof.disponible}
           </span>
-          <span className="rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-muted">
-            💬 {prof.respondeEn}
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-muted">
+            <ChatIcon size={13} /> {prof.respondeEn}
           </span>
-          <span className="rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-muted">
-            📍 hasta {prof.radioKm} km
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-muted">
+            <PinIcon size={13} /> hasta {prof.radioKm} km
           </span>
         </div>
 
@@ -78,8 +87,8 @@ export default async function Perfil({
         <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 rounded-2xl border border-line card-grad p-3.5">
           {prof.verificado && <Verificado label="Identidad verificada" />}
           {prof.matriculado && <Verificado label={`${prof.oficio} matriculado`} />}
-          <span className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-400">
-            🤝 Recomendado por {prof.recomendadoPor} colegas
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-amber-400">
+            <HandshakeIcon size={13} /> Recomendado por {prof.recomendadoPor} colegas
           </span>
         </div>
 
@@ -110,12 +119,12 @@ export default async function Perfil({
       {/* Cómo trabaja */}
       <Section title="Cómo trabaja">
         <ul className="space-y-2.5 text-sm">
-          <li className="flex gap-2.5">
-            <span>🧰</span>
+          <li className="flex items-start gap-2.5">
+            <ToolsIcon size={16} className="mt-0.5 shrink-0 text-muted" />
             <span className="text-muted">{prof.herramientas.join(" · ")}</span>
           </li>
-          <li className="flex gap-2.5">
-            <span>🛡️</span>
+          <li className="flex items-start gap-2.5">
+            <ShieldIcon size={16} className="mt-0.5 shrink-0 text-muted" />
             <span className="text-muted">Garantía: {prof.garantia}</span>
           </li>
         </ul>
@@ -165,8 +174,8 @@ export default async function Perfil({
                 <Stars value={t.review.rating} />
               </div>
               <p className="mt-1.5 text-sm text-muted">“{t.review.texto}”</p>
-              <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-400">
-                ✅ Trabajo: {t.titulo}
+              <p className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-400">
+                <ShieldIcon size={12} /> Trabajo: {t.titulo}
               </p>
             </div>
           ))}
@@ -174,7 +183,7 @@ export default async function Perfil({
       </Section>
 
       {/* Barra de acción fija */}
-      <div className="sticky bottom-[68px] z-30 mt-6 border-t border-line bg-surface/85 p-3 backdrop-blur-xl">
+      <div className="sticky bottom-[68px] z-30 mt-6 border-t border-line bg-surface/85 p-3 backdrop-blur-xl md:bottom-0">
         <div className="flex gap-2.5">
           <a
             href="https://wa.me/5492210000000"
@@ -182,7 +191,7 @@ export default async function Perfil({
             rel="noopener noreferrer"
             className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-emerald-500 py-3.5 text-sm font-bold text-white active:scale-[0.98]"
           >
-            💬 WhatsApp
+            <WhatsappIcon size={17} /> WhatsApp
           </a>
           <Link
             href="/trabajo/t1"

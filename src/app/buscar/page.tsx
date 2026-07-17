@@ -2,12 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  profesionales,
-  OFICIO_EMOJI,
-  type Oficio,
-} from "@/lib/data";
+import { profesionales, type Oficio } from "@/lib/data";
 import { Avatar, Stars, Verificado } from "@/components/ui";
+import { OficioIcon, SearchIcon } from "@/components/icons";
 
 const sugerencias = [
   "Pérdida de agua urgente en Los Hornos",
@@ -49,16 +46,13 @@ export default function Buscar() {
     <div>
       <header className="sticky top-0 z-30 border-b border-line bg-bg/90 px-4 pb-3 pt-5 backdrop-blur">
         <h1 className="mb-3 text-xl font-bold">Buscar</h1>
-        <div className="flex items-center gap-2 rounded-xl border border-line bg-card px-3 py-2.5">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#78716c" strokeWidth="2" strokeLinecap="round">
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
+        <div className="flex items-center gap-2 rounded-xl border border-line bg-card px-3 py-2.5 text-muted focus-within:border-accent">
+          <SearchIcon size={18} />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Contá qué necesitás, como le hablarías a un amigo"
-            className="w-full bg-transparent text-sm outline-none"
+            className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted"
           />
           {q && (
             <button onClick={() => setQ("")} className="text-muted">
@@ -79,9 +73,9 @@ export default function Buscar() {
                 <button
                   key={s}
                   onClick={() => setQ(s)}
-                  className="flex items-center gap-2 rounded-xl border border-line bg-card px-3 py-3 text-left text-sm active:bg-elevated"
+                  className="flex items-center gap-2.5 rounded-xl border border-line bg-card px-3 py-3 text-left text-sm active:bg-elevated"
                 >
-                  <span>🔎</span>
+                  <SearchIcon size={15} className="shrink-0 text-muted" />
                   {s}
                 </button>
               ))}
@@ -95,8 +89,9 @@ export default function Buscar() {
               {oficioDetectado ? (
                 <>
                   Entendí que buscás un{" "}
-                  <span className="font-bold">
-                    {OFICIO_EMOJI[oficioDetectado]} {oficioDetectado}
+                  <span className="inline-flex items-center gap-1 align-middle font-bold">
+                    <OficioIcon oficio={oficioDetectado} size={14} />
+                    {oficioDetectado}
                   </span>
                   {urgente && " para una urgencia"}. Estos son los mejores de tu
                   zona:
@@ -125,8 +120,9 @@ export default function Buscar() {
                     <span className="text-xs text-muted">{p.barrio}</span>
                   </div>
                   <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className="text-[11px] font-medium text-emerald-400">
-                      🟢 {p.disponible}
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-400">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                      {p.disponible}
                     </span>
                     {p.matriculado && <Verificado label="Matriculado" />}
                   </div>

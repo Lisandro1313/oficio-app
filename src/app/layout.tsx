@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import BottomNav from "@/components/BottomNav";
+import Sidebar from "@/components/Sidebar";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -30,13 +31,13 @@ export default function RootLayout({
   return (
     <html lang="es" className={jakarta.variable}>
       <body className="font-sans">
-        {/* Fondo tipo "escritorio" para que en desktop se vea como una app de celu */}
-        <div className="flex min-h-screen w-full justify-center bg-[#050506]">
-          <div className="relative flex min-h-screen w-full max-w-[440px] flex-col bg-bg shadow-[0_0_80px_rgba(0,0,0,0.6)]">
-            <main className="flex-1 pb-24">{children}</main>
-            <BottomNav />
+        <div className="mx-auto flex min-h-screen w-full max-w-[720px]">
+          <Sidebar />
+          <div className="relative min-h-screen w-full border-line md:border-x md:max-w-[460px]">
+            <main className="flex-1 pb-24 md:pb-10">{children}</main>
           </div>
         </div>
+        <BottomNav />
       </body>
     </html>
   );

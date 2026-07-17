@@ -4,6 +4,7 @@ import { trabajos, getProfesional } from "@/lib/data";
 import { Avatar, OficioBadge, Stars } from "@/components/ui";
 import BackBar from "@/components/BackBar";
 import PedirTrabajo from "@/components/PedirTrabajo";
+import { PinIcon, ShieldIcon } from "@/components/icons";
 
 export function generateStaticParams() {
   return trabajos.map((t) => ({ id: t.id }));
@@ -33,8 +34,8 @@ export default async function TrabajoDetalle({
           <OficioBadge oficio={trabajo.oficio} />
         </div>
         <div className="absolute inset-x-0 bottom-0 p-4">
-          <div className="mb-1 flex gap-2 text-[11px] font-medium text-white/70">
-            📍 {trabajo.barrio} · {trabajo.fecha}
+          <div className="mb-1 flex items-center gap-1 text-[11px] font-medium text-white/75">
+            <PinIcon size={12} /> {trabajo.barrio} · {trabajo.fecha}
           </div>
           <h1 className="text-xl font-extrabold leading-snug text-white drop-shadow">
             {trabajo.titulo}
@@ -68,9 +69,9 @@ export default async function TrabajoDetalle({
 
         {/* Ficha */}
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <Ficha label="💰 Precio" valor={trabajo.precioRango} />
-          <Ficha label="🕐 Duración" valor={trabajo.duracion} />
-          <Ficha label="🧱 Materiales" valor={trabajo.materiales} full />
+          <Ficha label="Precio" valor={trabajo.precioRango} />
+          <Ficha label="Duración" valor={trabajo.duracion} />
+          <Ficha label="Materiales" valor={trabajo.materiales} full />
         </div>
 
         {/* Reseña del cliente */}
@@ -82,14 +83,14 @@ export default async function TrabajoDetalle({
             <Stars value={trabajo.review.rating} />
           </div>
           <p className="mt-1.5 text-sm text-muted">“{trabajo.review.texto}”</p>
-          <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-400">
-            ✅ Reseña verificada — contrató por la app
+          <p className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-400">
+            <ShieldIcon size={12} /> Reseña verificada — contrató por la app
           </p>
         </div>
       </div>
 
       {/* Acción */}
-      <div className="sticky bottom-[68px] z-30 border-t border-line bg-surface/85 p-3 backdrop-blur-xl">
+      <div className="sticky bottom-[68px] z-30 border-t border-line bg-surface/85 p-3 backdrop-blur-xl md:bottom-0">
         <PedirTrabajo trabajo={trabajo.titulo} profesional={prof?.nombre} />
       </div>
     </div>

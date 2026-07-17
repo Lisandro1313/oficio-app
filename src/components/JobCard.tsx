@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getProfesional, type Trabajo } from "@/lib/data";
 import { Avatar, OficioBadge, Stars } from "@/components/ui";
+import { ClockIcon, PinIcon } from "@/components/icons";
 
 export default function JobCard({ trabajo }: { trabajo: Trabajo }) {
   const prof = getProfesional(trabajo.profId);
@@ -21,14 +22,14 @@ export default function JobCard({ trabajo }: { trabajo: Trabajo }) {
           <div className="absolute left-3 top-3">
             <OficioBadge oficio={trabajo.oficio} />
           </div>
-          <div className="absolute right-3 top-3 rounded-full bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
-            🕐 {trabajo.duracion}
+          <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white/90 backdrop-blur">
+            <ClockIcon size={12} /> {trabajo.duracion}
           </div>
 
           {/* Título sobre la foto */}
           <div className="absolute inset-x-0 bottom-0 p-4">
-            <div className="mb-1 flex items-center gap-1.5 text-[11px] font-medium text-white/70">
-              📍 {trabajo.barrio} · {trabajo.fecha}
+            <div className="mb-1 flex items-center gap-1 text-[11px] font-medium text-white/75">
+              <PinIcon size={12} /> {trabajo.barrio} · {trabajo.fecha}
             </div>
             <h3 className="text-[17px] font-bold leading-snug text-white drop-shadow">
               {trabajo.titulo}

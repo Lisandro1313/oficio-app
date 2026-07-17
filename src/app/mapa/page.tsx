@@ -4,11 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   profesionales,
-  OFICIO_EMOJI,
   type Oficio,
   type Profesional,
 } from "@/lib/data";
 import { Avatar, Stars } from "@/components/ui";
+import { OficioIcon, PinIcon, ShieldIcon } from "@/components/icons";
 
 const oficios: (Oficio | "Todos")[] = [
   "Todos",
@@ -39,8 +39,8 @@ export default function Mapa() {
             <h1 className="text-xl font-extrabold">Cerca tuyo</h1>
             <p className="text-xs text-muted">{lista.length} profesionales disponibles</p>
           </div>
-          <span className="rounded-full border border-line bg-card px-3 py-2 text-xs font-medium">
-            📍 La Plata
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-2 text-xs font-medium text-muted">
+            <PinIcon size={13} className="text-accent" /> La Plata
           </span>
         </div>
         <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto">
@@ -53,28 +53,26 @@ export default function Mapa() {
                   setFiltro(o);
                   setSel(null);
                 }}
-                className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold ${
+                className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold ${
                   active
                     ? "bg-accent-strong text-white shadow-[0_4px_14px_rgba(249,115,22,0.35)]"
                     : "border border-line bg-card text-muted"
                 }`}
               >
-                {o !== "Todos" && (
-                  <span className="mr-1">{OFICIO_EMOJI[o as Oficio]}</span>
-                )}
+                {o !== "Todos" && <OficioIcon oficio={o as Oficio} size={13} />}
                 {o}
               </button>
             );
           })}
           <button
             onClick={() => setSoloVerificados((v) => !v)}
-            className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold ${
+            className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold ${
               soloVerificados
                 ? "bg-emerald-500 text-white"
                 : "border border-line bg-card text-muted"
             }`}
           >
-            ✅ Verificados
+            <ShieldIcon size={13} /> Verificados
           </button>
         </div>
       </header>
@@ -108,12 +106,12 @@ export default function Mapa() {
             style={{ left: `${p.mapX}%`, top: `${p.mapY}%` }}
           >
             <div
-              className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-bg text-base shadow-lg ${
+              className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-bg text-white shadow-lg ${
                 sel?.id === p.id ? "ring-2 ring-accent ring-offset-2 ring-offset-bg" : ""
               }`}
               style={{ background: p.avatar }}
             >
-              {OFICIO_EMOJI[p.oficio]}
+              <OficioIcon oficio={p.oficio} size={18} />
             </div>
             <div className="mx-auto h-2 w-2 -translate-y-1 rotate-45 border-b-2 border-r-2 border-bg bg-white/90" />
           </button>
@@ -136,8 +134,9 @@ export default function Mapa() {
                 <span className="font-semibold text-ink">{sel.rating}</span>
                 <span>· {sel.barrio}</span>
               </div>
-              <span className="mt-0.5 inline-block text-[11px] font-medium text-emerald-400">
-                🟢 {sel.disponible}
+              <span className="mt-0.5 inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-400">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                {sel.disponible}
               </span>
             </div>
             <span className="text-xs font-bold text-accent">Ver →</span>
@@ -160,8 +159,9 @@ export default function Mapa() {
               <Avatar gradient={p.avatar} inicial={p.inicial} size={42} />
               <div className="flex-1">
                 <div className="text-sm font-semibold">{p.nombre}</div>
-                <div className="flex items-center gap-1 text-xs text-muted">
-                  <span>{OFICIO_EMOJI[p.oficio]} {p.oficio}</span>
+                <div className="flex items-center gap-1.5 text-xs text-muted">
+                  <OficioIcon oficio={p.oficio} size={13} />
+                  <span>{p.oficio}</span>
                   <span>·</span>
                   <Stars value={p.rating} />
                   <span className="font-semibold text-ink">{p.rating}</span>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { profesionales } from "@/lib/data";
 import { Avatar, OficioBadge, Stars } from "@/components/ui";
+import { HeartIcon } from "@/components/icons";
 
 // En la maqueta mostramos 2 profesionales "guardados" fijos.
 const guardadosIds = ["ramon-fernandez", "carlos-gomez"];
@@ -36,13 +37,13 @@ export default function Guardados() {
                 <span>· {p.barrio}</span>
               </div>
             </div>
-            <span className="text-accent">❤️</span>
+            <HeartIcon size={20} filled className="text-accent" />
           </Link>
         ))}
 
         <div className="rounded-2xl border border-dashed border-line p-6 text-center">
           <p className="text-sm text-muted">
-            Tocá el ❤️ en cualquier profesional para tenerlo a mano acá.
+            Tocá el corazón en cualquier profesional para tenerlo a mano acá.
           </p>
         </div>
       </div>
