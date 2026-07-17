@@ -79,7 +79,7 @@ export default function Buscar() {
                 <button
                   key={s}
                   onClick={() => setQ(s)}
-                  className="flex items-center gap-2 rounded-xl border border-line bg-card px-3 py-3 text-left text-sm active:bg-line"
+                  className="flex items-center gap-2 rounded-xl border border-line bg-card px-3 py-3 text-left text-sm active:bg-elevated"
                 >
                   <span>🔎</span>
                   {s}
@@ -125,7 +125,7 @@ export default function Buscar() {
                     <span className="text-xs text-muted">{p.barrio}</span>
                   </div>
                   <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span className="text-[11px] font-medium text-emerald-600">
+                    <span className="text-[11px] font-medium text-emerald-400">
                       🟢 {p.disponible}
                     </span>
                     {p.matriculado && <Verificado label="Matriculado" />}

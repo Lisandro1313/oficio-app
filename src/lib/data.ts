@@ -52,9 +52,14 @@ export type Trabajo = {
   duracion: string;
   materiales: string;
   fecha: string;
-  foto: string; // gradiente css
+  foto: string; // gradiente css (fallback / tinte)
+  img: string; // foto real
   review: { texto: string; autor: string; rating: number };
 };
+
+// Fotos reales (Unsplash) verificadas.
+const U = (id: string, w = 900) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=75`;
 
 export const profesionales: Profesional[] = [
   {
@@ -217,6 +222,7 @@ export const trabajos: Trabajo[] = [
     materiales: "Ladrillo visto, hierro, cemento, refractarios",
     fecha: "Hace 2 días",
     foto: "linear-gradient(135deg,#fb923c,#7c2d12)",
+    img: U("1590674899484-d5640e854abe"),
     review: {
       texto: "Impecable el laburo. Prolijo, puntual y dejó todo limpio. Recontra recomendado.",
       autor: "Sofía R.",
@@ -236,6 +242,7 @@ export const trabajos: Trabajo[] = [
     materiales: "Cable, tablero, térmicas, disyuntor",
     fecha: "Hace 3 días",
     foto: "linear-gradient(135deg,#fbbf24,#b45309)",
+    img: U("1558618666-fcd25c85cd64"),
     review: {
       texto: "Quedó todo funcionando perfecto y explicó cada cosa. Un genio.",
       autor: "Martín L.",
@@ -255,6 +262,7 @@ export const trabajos: Trabajo[] = [
     materiales: "Termotanque, caños, uniones",
     fecha: "Hace 5 días",
     foto: "linear-gradient(135deg,#38bdf8,#075985)",
+    img: U("1585704032915-c3400ca199e7"),
     review: {
       texto: "Vino el mismo día que lo llamé. Rápido y honesto con el precio.",
       autor: "Andrea P.",
@@ -274,6 +282,7 @@ export const trabajos: Trabajo[] = [
     materiales: "Látex lavable, enduido, impermeabilizante",
     fecha: "Hace 1 semana",
     foto: "linear-gradient(135deg,#818cf8,#3730a3)",
+    img: U("1562259949-e8e7689d7828"),
     review: {
       texto: "Dejó todo cubierto y prolijísimo. El frente quedó como nuevo.",
       autor: "Gabriel M.",
@@ -293,6 +302,7 @@ export const trabajos: Trabajo[] = [
     materiales: "Calefón, caño epoxi, llaves de paso",
     fecha: "Hace 1 semana",
     foto: "linear-gradient(135deg,#fb7185,#9f1239)",
+    img: U("1541888946425-d81bb19240f5"),
     review: {
       texto: "Muy profesional, dejó el certificado en mano. Tranquilidad total.",
       autor: "Verónica T.",
@@ -312,6 +322,7 @@ export const trabajos: Trabajo[] = [
     materiales: "Cemento, arena, malla, hierro",
     fecha: "Hace 2 semanas",
     foto: "linear-gradient(135deg,#facc15,#78350f)",
+    img: U("1517089152318-42ec560349c0"),
     review: {
       texto: "Nivelado perfecto. Cumplió con el presupuesto sin sorpresas.",
       autor: "Hernán C.",

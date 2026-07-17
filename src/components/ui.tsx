@@ -20,7 +20,7 @@ export function Stars({ value, size = 13 }: { value: number; size?: number }) {
 
 export function OficioBadge({ oficio }: { oficio: Oficio }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent">
+    <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">
       <span>{OFICIO_EMOJI[oficio]}</span>
       {oficio}
     </span>
@@ -29,10 +29,10 @@ export function OficioBadge({ oficio }: { oficio: Oficio }) {
 
 export function Verificado({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="#059669">
+    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-400">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="#34d399">
         <path d="M12 2l2.4 1.8 3 .1 1 2.8 2.4 1.8-.9 2.9.9 2.9-2.4 1.8-1 2.8-3 .1L12 22l-2.4-1.8-3-.1-1-2.8L3.2 15.5l.9-2.9-.9-2.9 2.4-1.8 1-2.8 3-.1L12 2Z" />
-        <path d="m8.5 12 2.3 2.3 4.7-4.7" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="m8.5 12 2.3 2.3 4.7-4.7" stroke="#0a0a0d" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
       {label}
     </span>

@@ -16,7 +16,7 @@ export default function PedirTrabajo({
     <>
       <button
         onClick={() => setOpen(true)}
-        className="w-full rounded-xl bg-accent py-3.5 text-sm font-semibold text-white active:scale-[0.98]"
+        className="w-full rounded-2xl bg-accent-strong py-3.5 text-sm font-bold text-white shadow-[0_6px_20px_rgba(249,115,22,0.4)] active:scale-[0.98]"
       >
         Pedir un trabajo parecido
       </button>
@@ -30,14 +30,14 @@ export default function PedirTrabajo({
           }}
         >
           <div
-            className="w-full max-w-[440px] rounded-t-3xl bg-card p-5 pb-8"
+            className="w-full max-w-[440px] rounded-t-3xl border-t border-line bg-elevated p-5 pb-8"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-line" />
+            <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-white/15" />
 
             {enviado ? (
               <div className="py-6 text-center">
-                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-3xl">
+                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/15 text-3xl">
                   ✅
                 </div>
                 <h3 className="text-lg font-bold">¡Pedido enviado!</h3>
@@ -93,7 +93,7 @@ function Campo({ label, placeholder }: { label: string; placeholder: string }) {
     <label className="block">
       <span className="text-xs font-medium text-muted">{label}</span>
       <input
-        className="mt-1 w-full rounded-xl border border-line bg-bg px-3 py-2.5 text-sm outline-none focus:border-accent"
+        className="mt-1 w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-accent"
         placeholder={placeholder}
       />
     </label>
